@@ -12,7 +12,7 @@ const Heroes = () => {
         <div>
           <Filtro />
         </div>
-        <div className="flex mt-8 mx-auto w-4/5 max-h-screen flex-wrap ">
+        <div className="flex mt-8 mx-auto w-11/12 h-full flex-wrap mr-4">
           <Card
             imagen="https://s3.amazonaws.com/comicgeeks/characters/avatars/10781.jpg?t=1611911758"
             nombre="Mark Grayson"
