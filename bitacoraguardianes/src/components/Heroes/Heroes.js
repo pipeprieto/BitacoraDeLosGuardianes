@@ -10,9 +10,9 @@ const Heroes = () => {
       </div>
       <div className="">
         <div>
-          <Filtro />
+          <Filtro texto1="Nombre" texto2="Habilidades" texto3="Relaciones" />
         </div>
-        <div className="flex mt-8 mx-auto w-11/12 h-full flex-wrap mr-4">
+        <div className="flex mt-8 mx-auto w-4/5 max-h-screen flex-wrap">
           <Card
             imagen="https://s3.amazonaws.com/comicgeeks/characters/avatars/10781.jpg?t=1611911758"
             nombre="Mark Grayson"

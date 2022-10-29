@@ -1,7 +1,5 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-// import Heroes  from '../../components/Heroes/Heroes';
-// import { Villanos } from '../Villanos/Villanos';
 
 export const NavBar = () => {
   return (

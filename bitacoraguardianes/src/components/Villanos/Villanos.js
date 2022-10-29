@@ -10,7 +10,7 @@ const Villanos = () => {
       </div>
       <div className="">
         <div>
-          <Filtro />
+          <Filtro texto1="Nombre" texto2="Origen" texto3="Debelidad" />
         </div>
         <div className="flex mt-8 mx-auto w-4/5 max-h-screen flex-wrap ">
           <Card
