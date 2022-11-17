@@ -1,6 +1,6 @@
 import React from "react";
-import Card from "../../components/Card/Card.js";
 import Filtro from "../../components/Filtro/Filtro.js";
+import HeroList from "../ListOfHeroes/HeroList.js";
 
 const Heroes = () => {
   return (
@@ -13,34 +13,7 @@ const Heroes = () => {
           <Filtro texto1="Nombre" texto2="Habilidades" texto3="Relaciones" />
         </div>
         <div className="flex mt-8 mx-auto w-4/5 max-h-screen flex-wrap">
-          <Card
-            imagen="https://s3.amazonaws.com/comicgeeks/characters/avatars/10781.jpg?t=1611911758"
-            nombre="Mark Grayson"
-            edad="17"
-            habilidades="Volar, super fuerza, invulnerabilidad sobrehumana."
-            debilidades="Muchas cosas."
-          />
-          <Card
-            imagen="https://s3.amazonaws.com/comicgeeks/characters/avatars/10781.jpg?t=1611911758"
-            nombre="Mark Grayson"
-            edad="17"
-            habilidades="Volar, super fuerza, invulnerabilidad sobrehumana."
-            debilidades="Muchas cosas."
-          />
-          <Card
-            imagen="https://s3.amazonaws.com/comicgeeks/characters/avatars/10781.jpg?t=1611911758"
-            nombre="Mark Grayson"
-            edad="17"
-            habilidades="Volar, super fuerza, invulnerabilidad sobrehumana."
-            debilidades="Muchas cosas."
-          />
-          <Card
-            imagen="https://s3.amazonaws.com/comicgeeks/characters/avatars/10781.jpg?t=1611911758"
-            nombre="Mark Grayson"
-            edad="17"
-            habilidades="Volar, super fuerza, invulnerabilidad sobrehumana."
-            debilidades="Muchas cosas."
-          />
+          <HeroList/>
         </div>
       </div>
     </div>

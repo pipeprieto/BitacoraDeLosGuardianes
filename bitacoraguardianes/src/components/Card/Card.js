@@ -1,6 +1,6 @@
 import React from 'react'
 import Info from '../InfoButton/Info';
-const Card = ({id, imagen, nombre, edad, habilidades, debilidades }) => {
+const Card = ({ imagen, nombre, edad, habilidades, debilidades }) => {
   return (
     <div className="border-2 border-cyan-300 bg-gradient-to-br from-cyan-700/40 to-cyan-600/75 rounded-tl-3xl mx-3 flex w-96 h-60 rounded-br-3xl my-5">
       <div className="flex-1 justify-center ml-2 mt-5">

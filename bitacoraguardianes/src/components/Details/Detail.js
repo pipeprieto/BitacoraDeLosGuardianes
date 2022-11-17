@@ -3,8 +3,21 @@ import React, { Component } from 'react'
 export default class Detail extends Component {
     constructor(props){
         super(props);
-        this.state ={};
+        this.state ={
+          patrocinadores:[],
+          actividades:[]
+        };
     }
+    getPatrocinadores(){}
+
+    getActividades(){}
+
+    componentDidMount(){
+      this.getPatrocinadores()
+      this.getActividades()
+    }
+
+
   render() {
     return (
       <>

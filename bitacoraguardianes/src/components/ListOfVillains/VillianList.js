@@ -1,32 +1,28 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Card from '../Card/Card';
+import { AddButton } from '../AddButton/AddButton';
 
-export default class VillianList extends Component {
-  constructor() {
-    this.state = {
-      villanos: [],
-    };
-    this.url = "";
-  }
-  getHeroesList = async () => {
-    try {
-      let response = await axios.get(`${this.url}/api/v1/Supers`);
-      this.setState(response);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
-  componentDidMount() {
-    this.getHeroesList();
-  }
-  render() {
-    return(
-        <>
-        {this.villanos.map((villano)=>{
-            <Card/>
+const VillianList = ()=> {
+ const vilianList =[]
+ return (
+      <>
+        {vilianList.map((hero,i) =>{
+          return (
+            <Card
+              key={hero[i].super_id}
+              imagen={hero[i].imagen}
+              nombre={hero[i].nombre}
+              edad={hero[i].edad}
+              habilidades={hero[i].habilidades}
+              debilidades={hero[i].debilidades}
+            />
+          );
         })}
-        </>
-    );
-  }
+        <AddButton></AddButton>
+      </>
+    )
+
+  
 }
+export default VillianList;
