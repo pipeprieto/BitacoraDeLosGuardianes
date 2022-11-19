@@ -7,6 +7,9 @@ export const heroSlice = createSlice({
     name:'heroSlice',
     initialState,
     reducers:{
+        getHeroes:(state,action)=>{
+            state.listHeroes = action.payload;
+        },
         addHero:(state,action)=>{
             state.listHeroes.push(action.payload);
         },
@@ -20,5 +23,5 @@ export const heroSlice = createSlice({
 
     }
 })
-export const {addHero} = heroSlice.actions;
+export const { addHero, deleteHero, getHeroes } = heroSlice.actions;
 export default heroSlice.reducer

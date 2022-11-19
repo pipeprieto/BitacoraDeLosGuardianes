@@ -1,10 +1,32 @@
-import React from 'react'
+import axios from 'axios';
 import Card from '../Card/Card';
 import { AddButton } from '../AddButton/AddButton';
-
+import {getVillains} from '../../features/villianslice';
+import {useSelector,useDispatch} from 'react-redux';
+import { useState,useEffect } from 'react';
 
 const VillianList = ()=> {
- const vilianList =[]
+ const url = "http://localhost:3002";
+ const vilianList = useSelector((state) => state.villainSlice.listVilains);
+ const dispatch = useDispatch();
+ const [list,setList] = useState([]);
+
+ const getVillainList = async()=>{
+  try {
+    let response = await axios.get(`${url}/villains`);
+    console.log(response.data);
+    setList(response.data)
+    console.log(list)
+    dispatch(getVillains(list));
+  } catch (error) {
+    console.log(error);
+  }
+ }
+
+ useEffect(()=>{
+  getVillainList();
+ },[])
+
  return (
       <>
         {vilianList.map((hero,i) =>{

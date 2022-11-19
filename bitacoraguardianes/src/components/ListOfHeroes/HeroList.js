@@ -1,26 +1,31 @@
-import React, { useEffect } from 'react'
 import axios from 'axios'
 import Card from "../../components/Card/Card.js";
 import { useSelector, useDispatch } from 'react-redux';
 import { getHeroes } from '../../features/heroslice.js';
 import { AddButton } from '../AddButton/AddButton.js';
+import { useState,useEffect } from 'react';
 
 const HeroList = ()=> {
     const url = "http://localhost:3002";
     const heroList = useSelector((state) => state.heroSlice.listHeroes);
     const dispatch = useDispatch();
+    const [list,setList] = useState([]);
         
-  //  const getHeroesList = async()=>{
-  //     try {
-  //      let response = await axios.get(`${url}/heroes`);
-  //      dispatch(getHeroes(response.data));
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  //   useEffect(()=>{
-  //      getHeroesList();
-  //   },[])
+   const getHeroesList = async()=>{
+      try {
+       let response = await axios.get(`${url}/heroes`);
+       console.log(response.data);
+       setList(response.data)
+       console.log(list);
+       dispatch(getHeroes(list));
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    useEffect(()=>{
+       getHeroesList();
+       console.log(heroList);
+    },[])
 
 
 
