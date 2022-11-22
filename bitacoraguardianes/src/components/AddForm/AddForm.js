@@ -1,39 +1,37 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { addHero } from '../../features/heroslice';
-import {addVillain} from '../../features/villianslice';
 import {useNavigate} from 'react-router-dom'
+import { SuperContext } from "../../context/Super/SuperContext.js";
+import { useContext } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 export const AddForm = () => {
-    //const selectorHeroe = useSelector((state)=>state.heroSlice.listHeroes)
-    //const selectorVillano = useSelector((state)=>state.villainSlice.listVilains);
-    const dispatch = useDispatch();
     const navigate = useNavigate();
+    const { addHero,addVillain } = useContext(SuperContext);
     const handleAdd = (e)=>{
         e.preventDefault();
         let inputs = document.querySelectorAll('input');
         let datos = {};
         inputs.forEach(e=>{
            datos = {
-            ...datos,
-           [e.name] : e.value
-          }
+             ...datos,
+             super_id: uuidv4(),
+             [e.name]: e.value,
+           };
         })
-        //const formData = new FormData(e.target);
         const data = datos;
         console.log(data)
-        if (data.rol === 'heroe') {
-          //dispatch(addHero(data));
-          navigate("/heroes");
-        }
-        if (data.rol === 'villano') {
-          //dispatch(addVillain(data));
-          navigate("/villanos");
+        if(data.rol === 'heroe'){
+          addHero(data);
+          navigate('/heroes');
         }
         
+        if (data.rol === 'villano') {
+          addVillain(data);
+          navigate('/villanos')
+        }
     }
 
   return (
-    <div className="min-h-screen  p-0 sm:p-12">
+    <div className="min-h-screen  p-0 sm:p-12 ">
       <div className="mx-auto max-w-md px-6 py-12 border-2 border-cyan-300 bg-gradient-to-br from-cyan-700/90 to-cyan-600/75 shadow-lg sm:rounded-3xl">
         <h1 className="text-2xl font-bold text-amber-300 mb-8">Añadir Super</h1>
         <form id="form">
