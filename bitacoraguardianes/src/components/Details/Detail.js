@@ -1,28 +1,13 @@
 import React, { Component } from 'react'
 
-export default class Detail extends Component {
-    constructor(props){
-        super(props);
-        this.state ={
-          patrocinadores:[],
-          actividades:[]
-        };
-    }
-    getPatrocinadores(){}
-
-    getActividades(){}
-
-    componentDidMount(){
-      this.getPatrocinadores()
-      this.getActividades()
-    }
+export const Detail = ()=> {
 
 
-  render() {
+  
     return (
       <>
         <div className="h-screen">
-          <div className="mx-auto w-4/5">
+          <div className="mx-auto w-4/5 pt-10">
             <h1 className="pt-5 text-center text-3xl text-amber-300">
               Detalles
             </h1>
@@ -132,4 +117,5 @@ export default class Detail extends Component {
       </>
     );
   }
-}
+
+

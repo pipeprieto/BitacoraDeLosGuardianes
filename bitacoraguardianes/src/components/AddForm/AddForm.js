@@ -31,7 +31,7 @@ export const AddForm = () => {
     }
 
   return (
-    <div className="min-h-screen  p-0 sm:p-12 ">
+    <div className="min-h-screen sm:p-12 ">
       <div className="mx-auto max-w-md px-6 py-12 border-2 border-cyan-300 bg-gradient-to-br from-cyan-700/90 to-cyan-600/75 shadow-lg sm:rounded-3xl">
         <h1 className="text-2xl font-bold text-amber-300 mb-8">Añadir Super</h1>
         <form id="form">
@@ -51,7 +51,6 @@ export const AddForm = () => {
               name="imagen"
               placeholder="Link de Imagen"
               className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none text-amber-300 focus:outline-none  border-cyan-300 placeholder:text-amber-300"
-              
             />
           </div>
 

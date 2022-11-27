@@ -5,15 +5,18 @@ import { SuperContext } from "../../context/Super/SuperContext.js";
 
 const HeroList = ()=> {
     const {heroes} = useContext(SuperContext);
+    
     return (
       <>
         {heroes.map((hero,i)=>{
           return (
             <Card
               key={hero.super_id}
+              id={hero.super_id}
               imagen={hero.imagen}
               nombre={hero.nombre}
               edad={hero.edad}
+              rol={hero.rol}
               habilidades={hero.habilidades}
               debilidades={hero.debilidades}
             />

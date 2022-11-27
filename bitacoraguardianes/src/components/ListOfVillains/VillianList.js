@@ -13,6 +13,7 @@ const VillianList = ()=> {
             <Card
               key={hero.super_id}
               imagen={hero.imagen}
+              id={hero.super_id}
               nombre={hero.nombre}
               edad={hero.edad}
               habilidades={hero.habilidades}

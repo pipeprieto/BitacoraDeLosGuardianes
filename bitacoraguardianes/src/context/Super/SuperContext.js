@@ -15,15 +15,43 @@ export const SuperContext = createContext(initialState)
 export const ContextProvider = ({children})=>{
     const [state, dispatch] = useReducer(superReducer, initialState)
     
-    const addHero = (action)=>{
-        console.log(state.heroes);
-        dispatch({type:'ADD_HERO', payload:action})
+    const addHero = (data)=>{
+        dispatch({type:'ADD_HERO', payload:data})
     }
-    const addVillain = (action)=>{
-        dispatch({type:'ADD_VILLAIN',payload:action})
+    const deleteHero = (data)=>{
+        dispatch({type:'DLTE_HERO', payload:data})
     }
-    return <SuperContext.Provider value={{...state,addHero,addVillain}}>
-            {children}
-        </SuperContext.Provider>
+
+    const updateHero = (data)=>{
+        dispatch({ type: "UPDT_HERO", payload: data });
+    }
+
+    const addVillain = (data)=>{
+        dispatch({type:'ADD_VILLAIN',payload:data})
+    }
+
+    const deleteVillain = (data) => {
+      dispatch({ type: "DLTE_VILLAIN", payload: data });
+    };
+
+    const updateVillain = (data) => {
+      dispatch({ type: "UPDT_VILLAIN", payload: data });
+    };
+
+    return (
+      <SuperContext.Provider
+        value={{
+          ...state,
+          addHero,
+          addVillain,
+          deleteHero,
+          updateHero,
+          deleteVillain,
+          updateVillain,
+        }}
+      >
+        {children}
+      </SuperContext.Provider>
+    );
     
 }
