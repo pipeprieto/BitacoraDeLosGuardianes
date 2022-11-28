@@ -11,13 +11,11 @@ const VillianList = ()=> {
         {villains.map((hero,i) =>{
           return (
             <Card
-              key={hero.super_id}
-              imagen={hero.imagen}
+              imagen={hero.imagen_link}
               id={hero.super_id}
               nombre={hero.nombre}
               edad={hero.edad}
-              habilidades={hero.habilidades}
-              debilidades={hero.debilidades}
+              rol={hero.rol_super}
             />
           );
         })}

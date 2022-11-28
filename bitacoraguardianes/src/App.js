@@ -2,15 +2,15 @@ import Heroes from './components/Heroes/Heroes';
 import Villanos from './components/Villanos/Villanos';
 import {Detail} from './components/Details/Detail';
 import { NavBar } from './components/Nav/NavBar';
-import {BrowserRouter as Router,Routes,Route,redirect} from 'react-router-dom';
+import {BrowserRouter as Router,Routes,Route,redirect,useParams} from 'react-router-dom';
 import { AddForm } from './components/AddForm/AddForm';
 import { ContextProvider } from './context/Super/SuperContext';
 import { useContext } from "react";
 import { SuperContext } from "./context/Super/SuperContext";
 
 function App() {
-  const { deleteHero, deleteVillain } =
-    useContext(SuperContext);
+  const { deleteHero, deleteVillain } = useContext(SuperContext);
+  const params = useParams();
   return (
     <>
       <Router>
@@ -31,12 +31,18 @@ function App() {
             <Route
               exact
               path="/delete/hero/:id"
-              action={redirect("http://localhost:3000/heroes")}
+              action={()=>{
+                deleteHero(params);
+                redirect("http://localhost:3000/heroes")
+              }}
             ></Route>
             <Route
               exact
               path="/delete/villain/:id"
-              action={redirect("http://localhost:3000/villanos")}
+              action={()=>{
+                deleteVillain(params);
+                redirect("http://localhost:3000/villanos");
+              }}
             ></Route>
           </Routes>
         </ContextProvider>

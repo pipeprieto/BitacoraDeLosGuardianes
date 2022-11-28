@@ -3,8 +3,8 @@ import { superReducer } from "../reducers/SuperReducer";
 import { getHerolist } from "../../request/HeroRequest/HeroRequest";
 import { getVillainList } from "../../request/VillainRequest/VillainRequest";
 
-const heroList = getHerolist('');
-const villainList = getVillainList('')
+const heroList = getHerolist();
+const villainList = getVillainList();
 
 const initialState = {
     heroes:heroList,

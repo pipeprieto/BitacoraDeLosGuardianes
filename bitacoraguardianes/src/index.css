@@ -8,7 +8,9 @@ html {
                                     rgba(0, 163, 255, 0) 100%
                                   );
   background-repeat: no-repeat;
-  overflow-y:auto;                          
+  overflow-y:auto;
+  min-height:100vh;   
+  box-sizing:border-box;                       
 }
 
 body {

@@ -1,12 +1,17 @@
 import axios from "axios";
+import { villanos } from "../../config/supers";
+
 
 let url = "https://localhost:7046";
-export const getVillainList = async () => {
+const localstorage = window.localStorage.getItem("villanos");
+
+export const getVillainList =  () => {
   try {
-    const res = await axios.get(
-      `${url}/api/v1/supers/villanos`
-    );
-    return res;
+    if (localstorage === null) {
+      window.localStorage.setItem("villanos", JSON.stringify(villanos));
+    }
+    let supers = JSON.parse(window.localStorage.getItem("villanos"));
+    return supers;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -17,7 +22,7 @@ export const getVillainById = async (id) => {
     const res = await axios.get(
       `${url}/api/v1/supers/villano/${id}`
     );
-    return res;
+    return res.data;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -28,7 +33,7 @@ export const getVillainByName = async (name) => {
     const res = await axios.get(
       `${url}/api/v1/supers/villano/${name}`
     );
-    return res;
+    return res.data;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -39,7 +44,7 @@ export const getVillainByOrigin = async (origin) => {
     const res = await axios.get(
       `${url}/api/v1/supers/villanoByOrigen/${origin}`
     );
-    return res;
+    return res.data;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -52,7 +57,7 @@ export const getVillainByWeaknesses = async (weaknesses) => {
         url
       }/api/v1/supers/villanoByDebilidades/${weaknesses}`
     );
-    return res;
+    return res.data;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -63,7 +68,7 @@ export const getWorstYoungVillain = async () => {
     const res = await axios.get(
       `${url}/api/v1/supers/worstVillainAgainstTeen`
     );
-    return res;
+    return res.data;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -76,7 +81,7 @@ export const getWorstVillainWithYoungHero = async (id) => {
         url
       }/api/v1/supers/WorstVillainAgainstTeenHero/${id}`
     );
-    return res;
+    return res.data;
   } catch (error) {
     throw new Error(error.message);
   }
