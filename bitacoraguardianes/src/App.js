@@ -2,7 +2,7 @@ import Heroes from './components/Heroes/Heroes';
 import Villanos from './components/Villanos/Villanos';
 import {Detail} from './components/Details/Detail';
 import { NavBar } from './components/Nav/NavBar';
-import {BrowserRouter as Router,Routes,Route,redirect,useParams} from 'react-router-dom';
+import {BrowserRouter as Router,Routes,Route,useNavigate,useParams} from 'react-router-dom';
 import { AddForm } from './components/AddForm/AddForm';
 import { ContextProvider } from './context/Super/SuperContext';
 import { useContext } from "react";
@@ -20,7 +20,7 @@ function App() {
             <Route path="/" element={<Heroes />}></Route>
             <Route exact path="/heroes" element={<Heroes />}></Route>
             <Route exact path="/villanos" element={<Villanos />}></Route>
-            <Route exact path="/info" element={<Detail />}></Route>
+            <Route exact path="/info/:id" element={<Detail id={params}/>}></Route>
             <Route exact path="/addform" element={<AddForm />}></Route>
             <Route exact path="/update/hero/:id" element={<AddForm />}></Route>
             <Route
@@ -32,16 +32,18 @@ function App() {
               exact
               path="/delete/hero/:id"
               action={()=>{
-                deleteHero(params);
-                redirect("http://localhost:3000/heroes")
+                let res = prompt('Está seguro de eliminar a este super?')
+                if (res) {
+                  deleteHero(params.id);  
+                }
+                
               }}
             ></Route>
             <Route
               exact
               path="/delete/villain/:id"
               action={()=>{
-                deleteVillain(params);
-                redirect("http://localhost:3000/villanos");
+                deleteVillain(params.id);
               }}
             ></Route>
           </Routes>

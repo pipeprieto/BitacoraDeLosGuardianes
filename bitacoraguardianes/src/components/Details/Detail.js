@@ -1,8 +1,34 @@
 import React, { Component } from 'react'
+import { useEffect,useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 export const Detail = ()=> {
+ const params = useParams();
+  const [info,setInfo] = useState({
+    nombre:'',
+    edad: 0,
+    image_link : '',
+    origen:'',
+    patrocinadores:[],
+    rasgos:[],
+    relaciones: '',
+    rol_super:''
 
-
+  })
+  let found ={};
+   const getSuperInfo = ()=>{
+    const heroes = JSON.parse(window.localStorage.getItem('heroes'));
+     found = heroes.find((h)=>h.super_id === params.id);
+    if (found === []) {
+      const villanos = JSON.parse(window.localStorage.getItem("villanos"))
+      found = villanos.find((v)=>v.super_id === params.id)
+    }
+    setInfo({nombre:found.nombre,edad:found.edad,image_link:found.image_link,origen:found.origen,patrocinadores:found.patrocinadores,rasgos:found.rasgosSuper,relaciones:found.relaciones,rol_super:found.rol_super})
+      console.log(info)
+   }
+   useEffect(()=>{
+    getSuperInfo()
+   },[])
   
     return (
       <>
@@ -16,15 +42,35 @@ export const Detail = ()=> {
             <div className="flex-1 flex-col w-1/3 sticky px-5 mt-5 max-h-80">
               <div className="mx-auto h-44 w-44 pt-3">
                 <img
-                  src="https://s3.amazonaws.com/comicgeeks/characters/avatars/10781.jpg?t=1611911758"
+                  src={info.image_link}
                   alt=""
                   className="h-36 w-36 mx-auto"
                 />
               </div>
               <div>
                 <p className="text-customyellow">
-                  Esto es solo un texto de prueba para colocar cierta
-                  información en esta vuelta.
+                  <span>Nombre: </span>
+                  {info.nombre}
+                </p>
+                <p className="text-customyellow">
+                  <span>Edad: </span>
+                  {info.edad} años
+                </p>
+                <p className="text-customyellow">
+                  <span>origen: </span>
+                  {info.origen}
+                </p>
+                <p className="text-customyellow">
+                  <span>Relaciones: </span>
+                  {info.relaciones}
+                </p>
+                <p className="text-customyellow">
+                  <span>Rol: </span>
+                  {info.rol_super}
+                </p>
+                <p className="text-customyellow">
+                  <span>Habilidades: </span>
+                  Desconocidas
                 </p>
               </div>
             </div>
@@ -58,19 +104,19 @@ export const Detail = ()=> {
                   <tbody className="bg-cyan-600 overflow-y-scroll w-full scrollbar-thin scrollbar-track-cyan-900 scrollbar-thumb-cyan-500">
                     <tr>
                       <td className="border border-spacing-4 border-cyan-500 text-amber-300">
-                        Hola
+                        Evento 1
                       </td>
                       <td className="border border-spacing-4 border-cyan-500 text-amber-300">
-                        Como estás
+                        Titulo Evento
                       </td>
                       <td className="border border-spacing-4 border-cyan-500 text-amber-300">
-                        bien
+                        Lugar evento
                       </td>
                       <td className="border border-spacing-4 border-cyan-500 text-amber-300">
-                        y
+                        Inicio Evento
                       </td>
                       <td className="border border-spacing-4 border-cyan-500 text-amber-300">
-                        tu
+                        Fin evento
                       </td>
                     </tr>
                   </tbody>
@@ -99,13 +145,13 @@ export const Detail = ()=> {
                   <tbody className="bg-cyan-600 overflow-y-scroll w-full scrollbar-thin scrollbar-track-cyan-900 scrollbar-thumb-cyan-500">
                     <tr>
                       <td className="border border-spacing-4 border-cyan-500 text-amber-300">
-                        Hola
+                        Nombre Patrocinador
                       </td>
                       <td className="border border-spacing-4 border-cyan-500 text-amber-300">
-                        Como estás
+                        Monto Patrocinador
                       </td>
                       <td className="border border-spacing-4 border-cyan-500 text-amber-300">
-                        bien
+                        Origen Patrocinador
                       </td>
                     </tr>
                   </tbody>
