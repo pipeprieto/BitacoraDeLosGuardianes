@@ -4,15 +4,15 @@ export const superReducer = (state,action)=>{
         let heroe = JSON.parse(window.localStorage.getItem('heroes'))
         heroe.push(action.payload);
         window.localStorage.setItem('heroes',JSON.stringify(heroe));
-        state.heroes.push(action.payload)
-        return {heroes:state.heroes}
+        // state.heroes.push(action.payload)
+        return {heroes:[...state.heroes,action.payload]}
 
       case "ADD_VILLAIN":
         let villanos = JSON.parse(window.localStorage.getItem("villanos"));
         villanos.push(action.payload);
         window.localStorage.setItem("villanos", JSON.stringify(villanos));
-        state.villains.push(action.payload)
-        return { villains: state.villain };
+        // state.villains.push(action.payload)
+        return { villains: [...state.villain,action.payload] };
 
       case "DLTE_HERO":
         let hero = JSON.parse(window.localStorage.getItem('heroes'))

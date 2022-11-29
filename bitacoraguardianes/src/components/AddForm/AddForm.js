@@ -25,7 +25,7 @@ export const AddForm = () => {
         const data = datos;
         if(data.rol_super === 'Heroe'){
           addHero(data);
-          navigate('/heroes');
+          navigate('/');
         }
         
         if (data.rol_super === 'Villano') {

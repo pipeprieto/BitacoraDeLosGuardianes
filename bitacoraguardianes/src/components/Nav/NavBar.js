@@ -10,7 +10,7 @@ export const NavBar = () => {
         <div className="flex-1">
           <ul className="flex text-center">
               <li className="flex-1 w-6 justify-evenly mx-10 my-3">
-                <Link to="/heroes" className="">
+                <Link to="/" className="">
                   Héroes
                 </Link>
               </li>

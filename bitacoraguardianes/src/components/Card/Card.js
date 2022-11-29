@@ -42,7 +42,7 @@ const Card = ({ imagen, id, nombre, edad, rol }) => {
           <p className="my-1 text-xs text-amber-300">{edad} años</p>
         </div>
         <div>
-          <Info  rolinfo={rol} />
+          <Info  id={id} />
         </div>
         <div className="flex w-30 ">
           <div className="flex-1">

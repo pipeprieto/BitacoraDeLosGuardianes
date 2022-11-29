@@ -18,7 +18,6 @@ function App() {
         <ContextProvider>
           <Routes>
             <Route path="/" element={<Heroes />}></Route>
-            <Route exact path="/heroes" element={<Heroes />}></Route>
             <Route exact path="/villanos" element={<Villanos />}></Route>
             <Route exact path="/info/:id" element={<Detail id={params}/>}></Route>
             <Route exact path="/addform" element={<AddForm />}></Route>
